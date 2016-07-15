@@ -17,10 +17,29 @@
 
 
 void run(
-    std::string in_file_name, std::string out_file_name,
-    int NSAMPLES, float NFREQ, std::string wf_name) {
+    std::string in_file_name, std::string out_file_name, std::string wf_name) {
  
   std::cout << " run ..." << std::endl;
+ 
+  std::cout << " in_file_name = " << in_file_name << std::endl;
+  TFile *input_file = new TFile(in_file_name.c_str());
+
+  int NSAMPLES;
+  float NFREQ;
+  std::vector<double>* samples = new std::vector<double>;
+  double amplitudeTruth;
+  TTree *tree = (TTree*) input_file->Get("Samples");
+  tree->SetBranchAddress("amplitudeTruth",      &amplitudeTruth);
+  tree->SetBranchAddress("samples",             &samples);
+  tree->SetBranchAddress("nSmpl",             &NSAMPLES);
+  tree->SetBranchAddress("nFreq",             &NFREQ);
+ 
+  int nentries = tree->GetEntries();
+  tree->GetEntry(0);
+ 
+  std::cout << " nentries = " << nentries << std::endl;
+  std::cout << " NSAMPLES = " << NSAMPLES << std::endl;
+  std::cout << " amplitudeTruth = " << amplitudeTruth << std::endl;
  
 
   int IDSTART = 7*25;
@@ -126,20 +145,6 @@ void run(
   std::cout << " end init " << std::endl;
  
  
- 
-  std::cout << " in_file_name = " << in_file_name << std::endl;
-  TFile *input_file = new TFile(in_file_name.c_str());
-
-  std::vector<double>* samples = new std::vector<double>;
-  double amplitudeTruth;
-  TTree *tree = (TTree*) input_file->Get("Samples");
-  tree->SetBranchAddress("amplitudeTruth",      &amplitudeTruth);
-  tree->SetBranchAddress("samples",             &samples);
- 
-  int nentries = tree->GetEntries();
- 
-  std::cout << " nentries = " << nentries << std::endl;
-  std::cout << " NSAMPLES = " << NSAMPLES << std::endl;
  
   TFile *output_file;
   TH1D *h01;
@@ -306,7 +311,7 @@ int main(int argc, char** argv) {
  
  
  
-  run(in_file_name, out_file_name, NSAMPLES, NFREQ, wf_name);
+  run(in_file_name, out_file_name, wf_name);
  
   std::cout << " out_file_name = " << out_file_name << std::endl;
  
