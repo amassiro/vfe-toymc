@@ -171,6 +171,7 @@ double Pulse::fShape(double x) {
 void Pulse::NoiseInit() {
  
 //  std::cout << " >> Pulse::NoiseInit " << std::endl;
+ _mC.clear();
  
  for(int i=0; i<_NSAMPLES; i++){
   double y = 1. - exp( -double(_NFREQ * i) / (sqrt(2.) * _TAU));
