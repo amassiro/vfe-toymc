@@ -5,7 +5,6 @@
 void print_pulse(Pulse pSh) {
   std::cout.precision(5);
   std::cout << std::fixed;
-  //std::cout << "tau: " << pSh.tau() << std::endl;
   std::cout << "pSh.corr(0...9): " << std::endl;
   for (int k = 0; k < 10; k++) {
     std::cout << pSh.corr(k) << "   ";
@@ -31,16 +30,11 @@ void print_pulse(Pulse pSh) {
 int main(int argc, char** argv) {
   Pulse pSh;
   pSh.Init();
-  std::vector<float> v = {0, 1};
-  //std::vector<float> v;
-  //for (int i = 1; i < argc; i ++) {
-    //v.push_back(atof(argv[i]));
-  //}
-  for (float fill: v) {
-    std::cout << "fill: " << fill << std::endl;
-    pSh.SetCorr(fill);
-    pSh.InitCholesky();
-    print_pulse(pSh);
-  }
+  pSh.SetNoiseCorrelationZero();
+  std::cout << "Noise correlations set to zero." << std::endl;
+  print_pulse(pSh);
+  pSh.SetNoiseCorrelationMax();
+  std::cout << "Noise correlations set to max." << std::endl;
+  print_pulse(pSh);
   return 0;
 }

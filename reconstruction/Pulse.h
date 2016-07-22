@@ -65,7 +65,8 @@ class Pulse{
   void NoiseInit();
   void InitCholesky();
   void InitCorr();
-  void SetCorr(double fill);
+  void SetNoiseCorrelationZero();
+  void SetNoiseCorrelationMax();
   double fShape(double);
   
 };
@@ -170,15 +171,44 @@ double Pulse::fShape(double x) {
 }
 
 
-// This only makes sense for fill=0 (uncorrelated noise)
-// Or fill=1 (completel correlated noise).
-void Pulse::SetCorr(double fill) {
- 
+void Pulse::SetNoiseCorrelationZero() {
  _mC.clear();
  _mC.push_back(1.0);
- 
  for(int i=1; i<_NSAMPLES; i++){
-    _mC.push_back(fill);
+    _mC.push_back(0.0);
+  }
+
+ _mL.clear();
+ // initialize
+ for(int i=0; i<_NSAMPLES; ++i){
+   std::vector<double> temp_mL;
+   for(int j=0; j<_NSAMPLES; ++j){
+     temp_mL.push_back(0);
+   }
+   _mL.push_back(temp_mL);
+ }
+ for(int i=0; i<_NSAMPLES; i++){
+    _mL.at(i).at(i) = 1;
+  }
+}
+ 
+void Pulse::SetNoiseCorrelationMax() {
+ _mC.clear();
+ for(int i=0; i<_NSAMPLES; i++){
+    _mC.push_back(1.0);
+  }
+
+ _mL.clear();
+ // initialize
+ for(int i=0; i<_NSAMPLES; ++i){
+   std::vector<double> temp_mL;
+   for(int j=0; j<_NSAMPLES; ++j){
+     temp_mL.push_back(0);
+   }
+   _mL.push_back(temp_mL);
+ }
+ for(int i=0; i<_NSAMPLES; i++){
+    _mL.at(i).at(0) = 1;
   }
 }
  
