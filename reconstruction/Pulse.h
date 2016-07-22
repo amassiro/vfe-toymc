@@ -198,6 +198,8 @@ void Pulse::InitCorr() {
 
 void Pulse::InitCholesky() {
 
+   _mL.clear();
+
   // initialize
   for(int i=0; i<_NSAMPLES; ++i){
    std::vector<double> temp_mL;
