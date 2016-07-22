@@ -63,6 +63,9 @@ class Pulse{
 
   void Init();
   void NoiseInit();
+  void InitCholesky();
+  void InitCorr();
+  void SetCorr(float fill);
   double fShape(double);
   
 };
@@ -167,8 +170,20 @@ double Pulse::fShape(double x) {
 }
 
 
+// This only makes sense for fill=0 (uncorrelated noise)
+// Or fill=1 (completel correlated noise).
+void Pulse::SetCorr(float fill) {
+ 
+ _mC.clear();
+ _mC.push_back(1.0);
+ 
+ for(int i=1; i<_NSAMPLES; i++){
+    _mC.push_back(fill);
+  }
+}
+ 
 
-void Pulse::NoiseInit() {
+void Pulse::InitCorr() {
  
 //  std::cout << " >> Pulse::NoiseInit " << std::endl;
  _mC.clear();
@@ -178,6 +193,10 @@ void Pulse::NoiseInit() {
 //   std::cout << "  ----> y(" << i << "::" << _NSAMPLES << " ) = " << y << " _TAU = " << _TAU << " _NFREQ = " << _NFREQ << std::endl;
     _mC.push_back( 1. - y * y);
   }
+}
+ 
+
+void Pulse::InitCholesky() {
 
   // initialize
   for(int i=0; i<_NSAMPLES; ++i){
@@ -212,3 +231,8 @@ void Pulse::NoiseInit() {
   }
 }
 
+
+void Pulse::NoiseInit() {
+  InitCorr();
+  InitCholesky();
+}
