@@ -17,7 +17,8 @@
 
 
 void run(
-    std::string in_file_name, std::string out_file_name, std::string wf_name) {
+    std::string in_file_name, std::string out_file_name, std::string wf_name,
+    float correlation_flag) {
  
   std::cout << " run ..." << std::endl;
  
@@ -69,6 +70,13 @@ void run(
   pSh.SetFNAMESHAPE(wf_file_name);
   pSh.Init();
  
+  // Change noise correlations to max/zero if one of the special flags was set
+  if (correlation_flag == 0.0) {
+    pSh.SetNoiseCorrelationZero();
+  } else if (correlation_flag == 1.0) {
+    pSh.SetNoiseCorrelationMax();
+  }
+
   std::cout << " pSh ready " << std::endl;
  
  
@@ -309,9 +317,18 @@ int main(int argc, char** argv) {
   }
   std::cout << " wf_name = " << wf_name << std::endl;
  
+  // Makeshift way of passing in an option to manually set noise correlations.
+  // Currently, this option will be ignored unless a 0 or a 1 is passed to it.
+  // May add more flexibility in the future.
+  float correlation_flag = .5;
+  if (argc>=7) {
+    correlation_flag = atof(argv[6]);
+  }
+  std::cout << " correlation_flag = " << wf_name << std::endl;
  
  
-  run(in_file_name, out_file_name, wf_name);
+ 
+  run(in_file_name, out_file_name, wf_name, correlation_flag);
  
   std::cout << " out_file_name = " << out_file_name << std::endl;
  
