@@ -65,7 +65,7 @@ class Pulse{
   void NoiseInit();
   void InitCholesky();
   void InitCorr();
-  void SetCorr(float fill);
+  void SetCorr(double fill);
   double fShape(double);
   
 };
@@ -172,7 +172,7 @@ double Pulse::fShape(double x) {
 
 // This only makes sense for fill=0 (uncorrelated noise)
 // Or fill=1 (completel correlated noise).
-void Pulse::SetCorr(float fill) {
+void Pulse::SetCorr(double fill) {
  
  _mC.clear();
  _mC.push_back(1.0);
