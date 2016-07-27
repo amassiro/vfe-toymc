@@ -9,9 +9,12 @@ def main(files, overwrite=True, dryrun=0):
         if not overwrite and os.path.exists(o):
           #print "skipping %s --> %s because %s already exists." %(i, o, o)
           continue  # not recreating+overwriting existing files
-        params = f.split('_')
+        params = f.replace('.root', '').split('_')
         NSAMPLES, NFREQ = params[4 : 6]
-        toExec = 'bin/Example07.multifit %s %s %s %s' % (i, o, NSAMPLES, NFREQ)
+        waveform = params[10]
+        print waveform
+        continue
+        toExec = 'bin/Example07.multifit %s %s %s %s %s' % (i, o, NSAMPLES, NFREQ, waveform)
         print toExec
         if (dryrun == 0) :
             os.system(toExec)
