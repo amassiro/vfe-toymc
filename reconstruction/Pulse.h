@@ -63,6 +63,10 @@ class Pulse{
 
   void Init();
   void NoiseInit();
+  void InitCholesky();
+  void InitCorr();
+  void SetNoiseCorrelationZero();
+  void SetNoiseCorrelationMax();
   double fShape(double);
   
 };
@@ -167,16 +171,64 @@ double Pulse::fShape(double x) {
 }
 
 
+void Pulse::SetNoiseCorrelationZero() {
+ _mC.clear();
+ _mC.push_back(1.0);
+ for(int i=1; i<_NSAMPLES; i++){
+    _mC.push_back(0.0);
+  }
 
-void Pulse::NoiseInit() {
+ _mL.clear();
+ // initialize
+ for(int i=0; i<_NSAMPLES; ++i){
+   std::vector<double> temp_mL;
+   for(int j=0; j<_NSAMPLES; ++j){
+     temp_mL.push_back(0);
+   }
+   _mL.push_back(temp_mL);
+ }
+ for(int i=0; i<_NSAMPLES; i++){
+    _mL.at(i).at(i) = 1;
+  }
+}
+ 
+void Pulse::SetNoiseCorrelationMax() {
+ _mC.clear();
+ for(int i=0; i<_NSAMPLES; i++){
+    _mC.push_back(1.0);
+  }
+
+ _mL.clear();
+ // initialize
+ for(int i=0; i<_NSAMPLES; ++i){
+   std::vector<double> temp_mL;
+   for(int j=0; j<_NSAMPLES; ++j){
+     temp_mL.push_back(0);
+   }
+   _mL.push_back(temp_mL);
+ }
+ for(int i=0; i<_NSAMPLES; i++){
+    _mL.at(i).at(0) = 1;
+  }
+}
+ 
+
+void Pulse::InitCorr() {
  
 //  std::cout << " >> Pulse::NoiseInit " << std::endl;
+ _mC.clear();
  
  for(int i=0; i<_NSAMPLES; i++){
   double y = 1. - exp( -double(_NFREQ * i) / (sqrt(2.) * _TAU));
 //   std::cout << "  ----> y(" << i << "::" << _NSAMPLES << " ) = " << y << " _TAU = " << _TAU << " _NFREQ = " << _NFREQ << std::endl;
     _mC.push_back( 1. - y * y);
   }
+}
+ 
+
+void Pulse::InitCholesky() {
+
+   _mL.clear();
 
   // initialize
   for(int i=0; i<_NSAMPLES; ++i){
@@ -211,3 +263,8 @@ void Pulse::NoiseInit() {
   }
 }
 
+
+void Pulse::NoiseInit() {
+  InitCorr();
+  InitCholesky();
+}

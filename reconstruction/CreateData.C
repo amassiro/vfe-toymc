@@ -67,6 +67,12 @@ int main(int argc, char** argv) {
   wf_name = (char *) wf_name_string.c_str();
   }
   if (argc>=11) pileup_shift = atof(argv[10]);
+
+  // Makeshift way of passing in an option to manually set noise correlations.
+  // Currently, this option will be ignored unless a 0 or a 1 is passed to it.
+  // May add more flexibility in the future.
+  float correlation_flag = 0.5;
+  if (argc>=12) correlation_flag = atof(argv[11]);
  
   int IDSTART = 7*25;
   int WFLENGTH = 500*4; // step 1/4 ns in waveform
@@ -97,11 +103,29 @@ int main(int argc, char** argv) {
   // Get the value of tau form the (initialized!) pulse
   pulse_tau = pSh.tau();
 
+  // Change noise correlations to max/zero if one of the special flags was set
+  if (correlation_flag == 0.0) {
+    pSh.SetNoiseCorrelationZero();
+  } else if (correlation_flag == 1.0) {
+    pSh.SetNoiseCorrelationMax();
+  }
+
 
   TFile *file = new TFile(wf_file_name.c_str());
-  TString filenameOutput =
-          Form("input/mysample_%d_%.3f_%.3f_%d_%.2f_%.2f_%.2f_%.3f_%.2f_%s.root", 
-          nEventsTotal, pulse_shift, pileup_shift, NSAMPLES, NFREQ, signalAmplitude, nPU, sigmaNoise, puFactor, wf_name);
+  TString filenameOutput;
+  if (correlation_flag == 0.0) {
+      filenameOutput =
+              Form("input/mysample_%d_%.3f_%.3f_%d_%.2f_%.2f_%.2f_%.3f_%.2f_%s_NoiseUncorrelated.root", 
+              nEventsTotal, pulse_shift, pileup_shift, NSAMPLES, NFREQ, signalAmplitude, nPU, sigmaNoise, puFactor, wf_name);
+  } else if (correlation_flag == 1.0) {
+      filenameOutput =
+              Form("input/mysample_%d_%.3f_%.3f_%d_%.2f_%.2f_%.2f_%.3f_%.2f_%s_NoiseFullyCorrelated.root", 
+              nEventsTotal, pulse_shift, pileup_shift, NSAMPLES, NFREQ, signalAmplitude, nPU, sigmaNoise, puFactor, wf_name);
+  } else {
+      filenameOutput =
+              Form("input/mysample_%d_%.3f_%.3f_%d_%.2f_%.2f_%.2f_%.3f_%.2f_%s.root", 
+              nEventsTotal, pulse_shift, pileup_shift, NSAMPLES, NFREQ, signalAmplitude, nPU, sigmaNoise, puFactor, wf_name);
+  }
   TFile *fileOut = new TFile(filenameOutput.Data(),"recreate");
  
   // Get PDF for pileup

@@ -1,6 +1,7 @@
 //---- plot output of multifit
 
-void plotPulse (std::string nameInputFile = "output.root", std::string nsample, std::string nfreq, std::string nameWF, int nEvent = 10){
+
+void plotPulse (std::string nameInputFile = "output.root", int nEvent = 10){
  
  Color_t* color = new Color_t [200];
  color[0] = kAzure; //kRed ;
@@ -23,32 +24,38 @@ void plotPulse (std::string nameInputFile = "output.root", std::string nsample, 
  TTree* tree = (TTree*) file->Get("RecoAndSim");
   
  int    nWF;
- std::vector<double>* waveform    = new std::vector<double>;
+ std::vector<double>* pulse_signal    = new std::vector<double>;
  std::vector<double>* samplesReco = new std::vector<double>;
  std::vector<double>* samples     = new std::vector<double>;
  std::vector<int>*    activeBXs   = new std::vector<int>;
  std::vector<double>* pulseShapeTemplate     = new std::vector<double>;
  
  float NFREQ;
+ int NSAMPLE;
+ std::string nameWF;
  double chiSquare;
  
  tree->SetBranchAddress("nWF",      &nWF);
- tree->SetBranchAddress("waveform", &waveform);
+ tree->SetBranchAddress("pulse_signal", &pulse_signal);
  tree->SetBranchAddress("samplesReco", &samplesReco);
  tree->SetBranchAddress("samples",   &samples);
  tree->SetBranchAddress("activeBXs", &activeBXs);
  tree->SetBranchAddress("nFreq",   &NFREQ);
+ tree->SetBranchAddress("nSmpl",   &NSAMPLE);
+ tree->SetBranchAddress("WFNAME",   &nameWF);
  tree->SetBranchAddress("pulseShapeTemplate",   &pulseShapeTemplate);
  tree->SetBranchAddress("chiSquare",      &chiSquare);
  
+ std::string nfreq = std::to_string(NFREQ);
+ std::string nsample = std::to_string(NSAMPLE);
  
  tree->GetEntry(nEvent);
  std::cout << " NFREQ = " << NFREQ << std::endl;
  
- TCanvas* ccwaveform = new TCanvas ("ccwaveform","",800,600);
+ TCanvas* ccpulse_signal = new TCanvas ("ccpulse_signal","",800,600);
  TGraph *gr = new TGraph();
  for(int i=0; i<nWF; i++){
-  gr->SetPoint(i, i, waveform->at(i));
+  gr->SetPoint(i, i, pulse_signal->at(i));
  }
  gr->Draw("AL");
  std::string graph_title = nameWF + " Waveform";
@@ -59,7 +66,7 @@ void plotPulse (std::string nameInputFile = "output.root", std::string nsample, 
  gr->GetXaxis()->SetTitle("time [ns]");
  std::string png_name = nameWF + "_raw.png";
  char * png_name_cst = png_name.c_str();
- ccwaveform->SaveAs(png_name_cst);
+ ccpulse_signal->SaveAs(png_name_cst);
  
  
  

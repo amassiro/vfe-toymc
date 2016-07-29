@@ -17,10 +17,30 @@
 
 
 void run(
-    std::string in_file_name, std::string out_file_name,
-    int NSAMPLES, float NFREQ, std::string wf_name) {
+    std::string in_file_name, std::string out_file_name, std::string wf_name,
+    float correlation_flag) {
  
   std::cout << " run ..." << std::endl;
+ 
+  std::cout << " in_file_name = " << in_file_name << std::endl;
+  TFile *input_file = new TFile(in_file_name.c_str());
+
+  int NSAMPLES;
+  float NFREQ;
+  std::vector<double>* samples = new std::vector<double>;
+  double amplitudeTruth;
+  TTree *tree = (TTree*) input_file->Get("Samples");
+  tree->SetBranchAddress("amplitudeTruth",      &amplitudeTruth);
+  tree->SetBranchAddress("samples",             &samples);
+  tree->SetBranchAddress("nSmpl",             &NSAMPLES);
+  tree->SetBranchAddress("nFreq",             &NFREQ);
+ 
+  int nentries = tree->GetEntries();
+  tree->GetEntry(0);
+ 
+  std::cout << " nentries = " << nentries << std::endl;
+  std::cout << " NSAMPLES = " << NSAMPLES << std::endl;
+  std::cout << " amplitudeTruth = " << amplitudeTruth << std::endl;
  
 
   int IDSTART = 7*25;
@@ -50,6 +70,13 @@ void run(
   pSh.SetFNAMESHAPE(wf_file_name);
   pSh.Init();
  
+  // Change noise correlations to max/zero if one of the special flags was set
+  if (correlation_flag == 0.0) {
+    pSh.SetNoiseCorrelationZero();
+  } else if (correlation_flag == 1.0) {
+    pSh.SetNoiseCorrelationMax();
+  }
+
   std::cout << " pSh ready " << std::endl;
  
  
@@ -126,20 +153,6 @@ void run(
   std::cout << " end init " << std::endl;
  
  
- 
-  std::cout << " in_file_name = " << in_file_name << std::endl;
-  TFile *input_file = new TFile(in_file_name.c_str());
-
-  std::vector<double>* samples = new std::vector<double>;
-  double amplitudeTruth;
-  TTree *tree = (TTree*) input_file->Get("Samples");
-  tree->SetBranchAddress("amplitudeTruth",      &amplitudeTruth);
-  tree->SetBranchAddress("samples",             &samples);
- 
-  int nentries = tree->GetEntries();
- 
-  std::cout << " nentries = " << nentries << std::endl;
-  std::cout << " NSAMPLES = " << NSAMPLES << std::endl;
  
   TFile *output_file;
   TH1D *h01;
@@ -304,9 +317,18 @@ int main(int argc, char** argv) {
   }
   std::cout << " wf_name = " << wf_name << std::endl;
  
+  // Makeshift way of passing in an option to manually set noise correlations.
+  // Currently, this option will be ignored unless a 0 or a 1 is passed to it.
+  // May add more flexibility in the future.
+  float correlation_flag = .5;
+  if (argc>=7) {
+    correlation_flag = atof(argv[6]);
+  }
+  std::cout << " correlation_flag = " << wf_name << std::endl;
  
  
-  run(in_file_name, out_file_name, NSAMPLES, NFREQ, wf_name);
+ 
+  run(in_file_name, out_file_name, wf_name, correlation_flag);
  
   std::cout << " out_file_name = " << out_file_name << std::endl;
  
