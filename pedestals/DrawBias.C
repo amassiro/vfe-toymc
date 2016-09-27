@@ -12,7 +12,7 @@
   TCanvas cc("cc", "absolute", 800, 600);
   graph.Draw("APL");
   graph.GetXaxis()->SetTitle("pedestal shift [GeV]");
-  graph.GetYaxis()->SetTitle("Energy shift [GeV]");
+  graph.GetYaxis()->SetTitle("Energy [GeV]");
   graph.GetYaxis()->SetTitleOffset(1.2);
   gPad->SetGrid();
   
@@ -49,7 +49,7 @@
   
   graph_relative_both.GetXaxis()->SetTitle("pedestal shift / Energy");
   graph_relative_both.GetYaxis()->SetTitle("Energy shift / Energy");
-  graph_relative_both.GetYaxis()->SetTitleOffset(1.2);
+  graph_relative_both.GetYaxis()->SetTitleOffset(1.4);
   
   TCanvas cc_relative_both("cc_relative_both", "relative_both", 800, 600);
   graph_relative_both.Draw("APL");
