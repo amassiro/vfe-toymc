@@ -58,6 +58,30 @@
   
   
   
+  
+  
+  
+  TGraph graph_adc;
+  for (int i=0; i<graph.GetN(); i++) {
+    graph_adc.SetPoint(i, graph.GetX()[i] / 0.04, graph.GetY()[i]);
+  }
+  graph_adc.SetMarkerSize(1);
+  graph_adc.SetMarkerStyle(24);
+  graph_adc.SetMarkerColor(kRed);
+  graph_adc.SetLineColor(kRed);
+  
+  graph_adc.GetXaxis()->SetTitle("pedestal shift [ADC counts]");
+  graph_adc.GetYaxis()->SetTitle("Energy [GeV]");
+  graph_adc.GetYaxis()->SetTitleOffset(1.4);
+ 
+  
+  TCanvas cc_ADC("cc_ADC", "ADC", 800, 600);
+  graph_adc.Draw("APL");
+  
+  gPad->SetGrid();
+  
+  
+  
 }
 
 
