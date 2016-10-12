@@ -55,6 +55,26 @@ And plot:
      
 Now systematically:
 
+    ./CreateData.exe    0        11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe    1        11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe    2        11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe    3        11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe    4        11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe    5        11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -1        11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -2        11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -3        11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -4        11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -5        11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -6        11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -7        11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -8        11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -9        11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -10       11    10     25     0     10    0         0      CRRC43     0    0.5       0
+
+    
+
+
     ./CreateData.exe    0        11    10     25     0     10    0         0      CRRC43     0    0.5      -1
     ./CreateData.exe    0        11    10     25     0     10    0         0      CRRC43     0    0.5      -0.1
     ./CreateData.exe    0        11    10     25     0     10    0         0      CRRC43     0    0.5      -0.09
@@ -128,6 +148,18 @@ Now systematically:
     r99t -q -b plot/plot.C\(\"output/output_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.10.root\",0.10\)
     r99t -q -b plot/plot.C\(\"output/output_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_1.00.root\",1.00\)
 
+    
+    
+    r99t  plot/plotPulseInputMany.C
+    
+    r99t  plot/plotPulseInput.C\(\"input/mysample_11_5.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root\"\)
+    r99t  plot/plotPulseInput.C\(\"input/mysample_11_4.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root\"\)
+    r99t  plot/plotPulseInput.C\(\"input/mysample_11_3.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root\"\)
+    r99t  plot/plotPulseInput.C\(\"input/mysample_11_2.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root\"\)
+    r99t  plot/plotPulseInput.C\(\"input/mysample_11_1.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root\"\)
+    r99t  plot/plotPulseInput.C\(\"input/mysample_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root\"\)
+    
+    
     
     
     ./CreateData.exe    0        11    10     25     0     100    0         0      CRRC43     0    0.5      -1
