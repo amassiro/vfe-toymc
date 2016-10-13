@@ -326,7 +326,69 @@ Now systematically:
     r99t plot/plotPulse.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root\",2\)
 
         
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_0.root       10            25         13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_1.root       10            25         14
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_2.root       10            25         15
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_3.root       10            25         16
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_-1.root      10            25         12
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_-2.root      10            25         11
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_-3.root      10            25         10
+
     
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_0.1.root       10            25         13.1
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_0.2.root       10            25         13.2
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_0.3.root       10            25         13.3
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_0.4.root       10            25         13.4
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_0.5.root       10            25         13.5
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_0.6.root       10            25         13.6
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_0.7.root       10            25         13.7
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_0.8.root       10            25         13.8
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_0.9.root       10            25         13.9
+
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_-0.9.root       10            25         12.1
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_-0.8.root       10            25         12.2
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_-0.7.root       10            25         12.3
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_-0.6.root       10            25         12.4
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_-0.5.root       10            25         12.5
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_-0.4.root       10            25         12.6
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_-0.3.root       10            25         12.7
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_-0.2.root       10            25         12.8
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_-0.1.root       10            25         12.9
+    
+    r99t plot/TimeShift.C
+    r99t plot/TimeShift.C\(1\)
+        
+    r99t plot/plotPulse.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_0.root\",2\)
+    r99t plot/plotPulse.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_-0.1.root\",2\)
+    r99t plot/plotPulse.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_-0.6.root\",2\)
+    r99t plot/plotPulse.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_-0.7.root\",2\)
+    r99t plot/plotPulse.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_-0.8.root\",2\)
+    r99t plot/plotPulse.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00_shift_-0.9.root\",2\)
+
+    
+    
+    
+    
+    
+    
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00_0.0.root       10            25        13      0.0
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00_0.1.root       10            25        13      -0.1
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00_0.6.root       10            25        13      -0.6
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00_0.7.root       10            25        13      -0.7
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00_0.8.root       10            25        13      -0.8
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00_0.9.root       10            25        13      -0.9
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00_1.0.root       10            25        13      -1.0
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00_1.1.root       10            25        13      -1.1
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00_1.2.root       10            25        13      -1.2
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00_1.3.root       10            25        13      -1.3
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00_1.4.root       10            25        13      -1.4
+
+    r99t plot/PedestalShift.C
+    
+    
+
+    
+        
     ./CreateData.exe    0        11    10     25     0     100    0         0      CRRC43     0    0.5      -1
     ./CreateData.exe    0        11    10     25     0     100    0         0      CRRC43     0    0.5      -0.1
     ./CreateData.exe    0        11    10     25     0     100    0         0      CRRC43     0    0.5      -0.09

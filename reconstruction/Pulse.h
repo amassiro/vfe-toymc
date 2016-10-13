@@ -50,7 +50,7 @@ public:
   void SetNFREQ ( float NFREQ );
   void SetTAU ( float TAU );
   void SetWFLENGTH ( int WFLENGTH );
-  void SetIDSTART ( int IDSTART );
+  void SetIDSTART ( float IDSTART );
   
   TGraph* grPS() {return _grPS; };
   float tMin() const { return _tMin; };
@@ -101,7 +101,7 @@ double Pulse::cholesky ( int i, int j ) const {
 }
 
 
-void Pulse::SetIDSTART ( int IDSTART ) {
+void Pulse::SetIDSTART ( float IDSTART ) {
   _IDSTART = IDSTART;
 }
 

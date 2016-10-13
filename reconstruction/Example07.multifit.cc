@@ -44,9 +44,11 @@ TH1F* CreateHistoAmplitudes( const PulseVector& sam, int itime, int type) {
 
 
 
-void run(std::string inputFile, std::string outFile, int NSAMPLES, float NFREQ, float time_shift) {
+void run(std::string inputFile, std::string outFile, int NSAMPLES, float NFREQ, float time_shift, float pedestal_shift) {
  
  std::cout << " run ..." << std::endl;
+ 
+ float return_chi2 = -99;
  
  //----
 //  int NSAMPLES = 10;
@@ -54,7 +56,7 @@ void run(std::string inputFile, std::string outFile, int NSAMPLES, float NFREQ, 
 //  int WFLENGTH = 500;
 //  int IDSTART = 180;
 //  int IDSTART = 7*25;
- int IDSTART = 6*25 + time_shift;
+ float IDSTART = 6*25 + time_shift;
  
  //----
 //  IDSTART = 7.2 * NFREQ;
@@ -285,6 +287,7 @@ void run(std::string inputFile, std::string outFile, int NSAMPLES, float NFREQ, 
  
  std::vector <double> samplesReco;
  int ipulseintime = 0;
+ newtree->Branch("chi2",   &return_chi2, "chi2/F");
  newtree->Branch("samplesReco",   &samplesReco);
  newtree->Branch("ipulseintime",  ipulseintime,  "ipulseintime/I");
  newtree->Branch("activeBXs",     &activeBXs);
@@ -323,7 +326,7 @@ void run(std::string inputFile, std::string outFile, int NSAMPLES, float NFREQ, 
   
   
   for(int i=0; i<NSAMPLES; i++){
-   amplitudes[i] = samples->at(i);
+   amplitudes[i] = samples->at(i) - pedestal_shift;
 //    std::cout << " samples->at(" << i << ") = " << samples->at(i) << std::endl;
   }
   
@@ -333,7 +336,12 @@ void run(std::string inputFile, std::string outFile, int NSAMPLES, float NFREQ, 
   double pedrms = 1.0;
   
    
-  pulsefunc.disableErrorCalculation();
+  // --- why have you disabled this!?!?!??!
+//   pulsefunc.disableErrorCalculation();
+  
+  
+  
+  
   
 //   std::cout << " amplitudes = " << amplitudes << std::endl;
 //   std::cout << " noisecor = " << noisecor << std::endl;
@@ -344,6 +352,8 @@ void run(std::string inputFile, std::string outFile, int NSAMPLES, float NFREQ, 
   
   bool status = pulsefunc.DoFit( amplitudes, noisecor, pedrms, activeBX, fullpulse, fullpulsecov );
   double chisq = pulsefunc.ChiSq();
+  return_chi2 = chisq;
+  std::cout << " Example7 :: return_chi2 = " << return_chi2 << std::endl;
   
   ipulseintime = 0;
   for (unsigned int ipulse=0; ipulse<pulsefunc.BXs()->rows(); ++ipulse) {
@@ -484,10 +494,17 @@ int main(int argc, char** argv) {
    time_shift = atof(argv[5]);
  }
  std::cout << " time_shift = " << time_shift << std::endl;
+
+ //---- pedestal shift
+ float pedestal_shift = 0;
+ if (argc>=7) {
+   pedestal_shift = atof(argv[6]);
+ }
+ std::cout << " time_shift = " << time_shift << std::endl;
  
  
  
- run(inputFile, outFile, NSAMPLES, NFREQ, time_shift);
+ run(inputFile, outFile, NSAMPLES, NFREQ, time_shift, pedestal_shift);
  
  std::cout << " outFile = " << outFile << std::endl;
  
