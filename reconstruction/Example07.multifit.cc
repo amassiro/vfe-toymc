@@ -44,7 +44,7 @@ TH1F* CreateHistoAmplitudes( const PulseVector& sam, int itime, int type) {
 
 
 
-void run(std::string inputFile, std::string outFile, int NSAMPLES, float NFREQ) {
+void run(std::string inputFile, std::string outFile, int NSAMPLES, float NFREQ, float time_shift) {
  
  std::cout << " run ..." << std::endl;
  
@@ -53,7 +53,8 @@ void run(std::string inputFile, std::string outFile, int NSAMPLES, float NFREQ) 
 //  int NFREQ = 25;
 //  int WFLENGTH = 500;
 //  int IDSTART = 180;
- int IDSTART = 7*25;
+//  int IDSTART = 7*25;
+ int IDSTART = 6*25 + time_shift;
  
  //----
 //  IDSTART = 7.2 * NFREQ;
@@ -472,13 +473,21 @@ int main(int argc, char** argv) {
  //---- number of samples per impulse
  float NFREQ = 25;
  if (argc>=5) {
-  NFREQ = atof(argv[4]);
+   NFREQ = atof(argv[4]);
  }
  std::cout << " NFREQ = " << NFREQ << std::endl;
+
+
+ //---- time shift
+ float time_shift = 0;
+ if (argc>=6) {
+   time_shift = atof(argv[5]);
+ }
+ std::cout << " time_shift = " << time_shift << std::endl;
  
  
  
- run(inputFile, outFile, NSAMPLES, NFREQ);
+ run(inputFile, outFile, NSAMPLES, NFREQ, time_shift);
  
  std::cout << " outFile = " << outFile << std::endl;
  

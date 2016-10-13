@@ -53,8 +53,68 @@ And plot:
     r99t plot/plotPulse.C\(\"output/output_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root\",2\)
     
      
+     
 Now systematically:
 
+    ./CreateData.exe    0        11    20     25     0     10    0         0      CRRC43     0    0.5       0
+    ./Example07.multifit.exe    input/mysample_11_0.000_0.000_20_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root    output/output_11_0.000_0.000_20_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root       20            25
+
+    r99t plot/plotPulse.C\(\"output/output_11_0.000_0.000_20_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root\",2\)
+    r99t plot/plot.C\(\"output/output_11_0.000_0.000_20_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root\"\)
+
+    
+    ./CreateData.exe    0        11    20     12.5     0     10    0         0      CRRC43     0    0.5       0
+    ./Example07.multifit.exe    input/mysample_11_0.000_0.000_20_12.50_10.00_0.00_0.000_0.00_CRRC43_0.00.root    output/output_11_0.000_0.000_20_12.50_10.00_0.00_0.000_0.00_CRRC43_0.00.root       20            12.5
+
+    r99t plot/plotPulse.C\(\"output/output_11_0.000_0.000_20_12.50_10.00_0.00_0.000_0.00_CRRC43_0.00.root\",2\)
+    r99t plot/plot.C\(\"output/output_11_0.000_0.000_20_12.50_10.00_0.00_0.000_0.00_CRRC43_0.00.root\"\)
+
+    
+    
+    ./CreateData.exe    0        11    40     6.25     0     10    0         0      CRRC43     0    0.5       0
+    ./Example07.multifit.exe    input/mysample_11_0.000_0.000_40_6.25_10.00_0.00_0.000_0.00_CRRC43_0.00.root    output/output_11_0.000_0.000_40_6.25_10.00_0.00_0.000_0.00_CRRC43_0.00.root       40            6.25
+
+    r99t plot/plotPulse.C\(\"output/output_11_0.000_0.000_40_6.25_10.00_0.00_0.000_0.00_CRRC43_0.00.root\",2\)
+    r99t plot/plot.C\(\"output/output_11_0.000_0.000_40_6.25_10.00_0.00_0.000_0.00_CRRC43_0.00.root\"\)
+
+    
+    
+    ./CreateData.exe    0        11    40     6.25     100     10    0         10      CRRC43     0    0.5       0
+    ./Example07.multifit.exe    input/mysample_11_0.000_0.000_40_6.25_10.00_100.00_0.000_10.00_CRRC43_0.00.root    output/output_11_0.000_0.000_40_6.25_10.00_100.00_0.000_10.00_CRRC43_0.00.root      40            6.25
+
+    r99t plot/plotPulse.C\(\"output/output_11_0.000_0.000_40_6.25_10.00_100.00_0.000_10.00_CRRC43_0.00.root\",2\)
+    r99t plot/plot.C\(\"output/output_11_0.000_0.000_40_6.25_10.00_100.00_0.000_10.00_CRRC43_0.00.root\"\)
+
+    
+    
+    ./CreateData.exe    0        200    40     6.25     100     10    0         10      CRRC43     0    0.5       0
+    ./Example07.multifit.exe    input/mysample_200_0.000_0.000_40_6.25_10.00_100.00_0.000_10.00_CRRC43_0.00.root    output/output_200_0.000_0.000_40_6.25_10.00_100.00_0.000_10.00_CRRC43_0.00.root      40            6.25
+
+    r99t plot/plotPulse.C\(\"output/output_200_0.000_0.000_40_6.25_10.00_100.00_0.000_10.00_CRRC43_0.00.root\",2\)
+    r99t plot/plot.C\(\"output/output_200_0.000_0.000_40_6.25_10.00_100.00_0.000_10.00_CRRC43_0.00.root\"\)
+    
+    
+    ./CreateData.exe    0        200    10     25.00     100     10    0         10      CRRC43     0    0.5       0
+    ./Example07.multifit.exe    input/mysample_200_0.000_0.000_10_25.00_10.00_100.00_0.000_10.00_CRRC43_0.00.root    output/output_200_0.000_0.000_10_25.00_10.00_100.00_0.000_10.00_CRRC43_0.00.root      10            25.00
+
+    r99t plot/plotPulse.C\(\"output/output_200_0.000_0.000_10_25.00_10.00_100.00_0.000_10.00_CRRC43_0.00.root\",2\)
+    r99t plot/plotPulse.C\(\"output/output_200_0.000_0.000_10_25.00_10.00_100.00_0.000_10.00_CRRC43_0.00.root\",3\)
+    r99t plot/plotPulse.C\(\"output/output_200_0.000_0.000_10_25.00_10.00_100.00_0.000_10.00_CRRC43_0.00.root\",4\)
+    r99t plot/plot.C\(\"output/output_200_0.000_0.000_10_25.00_10.00_100.00_0.000_10.00_CRRC43_0.00.root\"\)
+    
+    
+    
+    ./CreateData.exe    0        100    10     25.00     100     10    0         10      CRRC43     0    0.5       0
+    ./Example07.multifit.exe    input/mysample_100_0.000_0.000_10_25.00_10.00_100.00_0.000_10.00_CRRC43_0.00.root    output/output_100_0.000_0.000_10_25.00_10.00_100.00_0.000_10.00_CRRC43_0.00.root      10            25.00
+
+    r99t plot/plotPulse.C\(\"output/output_100_0.000_0.000_10_25.00_10.00_100.00_0.000_10.00_CRRC43_0.00.root\",2\)
+    r99t plot/plotPulse.C\(\"output/output_100_0.000_0.000_10_25.00_10.00_100.00_0.000_10.00_CRRC43_0.00.root\",3\)
+    r99t plot/plotPulse.C\(\"output/output_100_0.000_0.000_10_25.00_10.00_100.00_0.000_10.00_CRRC43_0.00.root\",4\)
+    r99t plot/plot.C\(\"output/output_100_0.000_0.000_10_25.00_10.00_100.00_0.000_10.00_CRRC43_0.00.root\"\)
+    
+    
+    
+    
     ./CreateData.exe    0        11    10     25     0     10    0         0      CRRC43     0    0.5       0
     ./CreateData.exe    1        11    10     25     0     10    0         0      CRRC43     0    0.5       0
     ./CreateData.exe    2        11    10     25     0     10    0         0      CRRC43     0    0.5       0
@@ -71,6 +131,16 @@ Now systematically:
     ./CreateData.exe   -8        11    10     25     0     10    0         0      CRRC43     0    0.5       0
     ./CreateData.exe   -9        11    10     25     0     10    0         0      CRRC43     0    0.5       0
     ./CreateData.exe   -10       11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -11       11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -12       11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -13       11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -14       11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -15       11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -16       11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -17       11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -18       11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -19       11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe   -20       11    10     25     0     10    0         0      CRRC43     0    0.5       0
 
     
 
@@ -100,6 +170,33 @@ Now systematically:
     ./CreateData.exe    0        11    10     25     0     10    0         0      CRRC43     0    0.5       1
 
 
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5      -1
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5      -0.1
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5      -0.09
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5      -0.08
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5      -0.07
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5      -0.06
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5      -0.05
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5      -0.04
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5      -0.03
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5      -0.02
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5      -0.01
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5       0
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5       0.01
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5       0.02
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5       0.03
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5       0.04
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5       0.05
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5       0.06
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5       0.07
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5       0.08
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5       0.09
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5       0.1
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5       1
+
+
+    
+    
     ./Example07.multifit.exe    input/mysample_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root     output/output_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root       10            25
     ./Example07.multifit.exe    input/mysample_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.10.root     output/output_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.10.root       10            25
     ./Example07.multifit.exe    input/mysample_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.09.root     output/output_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.09.root       10            25
@@ -124,6 +221,38 @@ Now systematically:
     ./Example07.multifit.exe    input/mysample_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.10.root      output/output_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.10.root       10            25
     ./Example07.multifit.exe    input/mysample_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_1.00.root      output/output_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_1.00.root       10            25
 
+    
+    
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root       10            25        13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.10.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.10.root       10            25        13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.09.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.09.root       10            25        13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.08.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.08.root       10            25        13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.07.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.07.root       10            25        13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.06.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.06.root       10            25        13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.05.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.05.root       10            25        13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.04.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.04.root       10            25        13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.03.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.03.root       10            25        13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.02.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.02.root       10            25        13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.01.root     output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.01.root       10            25        13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root       10            25         13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.01.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.01.root       10            25         13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.02.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.02.root       10            25         13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.03.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.03.root       10            25         13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.04.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.04.root       10            25         13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.05.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.05.root       10            25         13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.06.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.06.root       10            25         13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.07.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.07.root       10            25         13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.08.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.08.root       10            25         13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.09.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.09.root       10            25         13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.10.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.10.root       10            25         13
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_1.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_1.00.root       10            25         13
+
+    output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root
+    
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root\",-1.00\)
+
+    
+    
     r99t -q -b plot/plot.C\(\"output/output_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root\",-1.00\)
     r99t -q -b plot/plot.C\(\"output/output_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.10.root\",-0.10\)
     r99t -q -b plot/plot.C\(\"output/output_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.09.root\",-0.09\)
@@ -148,7 +277,31 @@ Now systematically:
     r99t -q -b plot/plot.C\(\"output/output_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.10.root\",0.10\)
     r99t -q -b plot/plot.C\(\"output/output_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_1.00.root\",1.00\)
 
-    
+
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root\",-1.00\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.10.root\",-0.10\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.09.root\",-0.09\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.08.root\",-0.08\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.07.root\",-0.07\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.06.root\",-0.06\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.05.root\",-0.05\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.04.root\",-0.04\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.03.root\",-0.03\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.02.root\",-0.02\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-0.01.root\",-0.01\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root\",0.00\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.01.root\",0.01\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.02.root\",0.02\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.03.root\",0.03\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.04.root\",0.04\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.05.root\",0.05\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.06.root\",0.06\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.07.root\",0.07\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.08.root\",0.08\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.09.root\",0.09\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.10.root\",0.10\)
+    r99t -q -b plot/plot.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_1.00.root\",1.00\)
+
     
     r99t  plot/plotPulseInputMany.C
     
@@ -159,8 +312,20 @@ Now systematically:
     r99t  plot/plotPulseInput.C\(\"input/mysample_11_1.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root\"\)
     r99t  plot/plotPulseInput.C\(\"input/mysample_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root\"\)
     
-    
-    
+    ./Example07.multifit.exe    input/mysample_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root    output/output_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root       10            25
+
+    r99t plot/plotPulse.C\(\"output/output_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root\",2\)
+    r99t plot/plot.C\(\"output/output_11_0.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root\"\)
+
+    ./CreateData.exe  -13        11    10     25     0     10    0         0      CRRC43     0    0.5       0
+
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root       10            25
+    ./Example07.multifit.exe    input/mysample_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root      output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root       10            25    13
+        
+    r99t plot/plotPulse.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_-1.00.root\",2\)
+    r99t plot/plotPulse.C\(\"output/output_11_-13.000_0.000_10_25.00_10.00_0.00_0.000_0.00_CRRC43_0.00.root\",2\)
+
+        
     
     ./CreateData.exe    0        11    10     25     0     100    0         0      CRRC43     0    0.5      -1
     ./CreateData.exe    0        11    10     25     0     100    0         0      CRRC43     0    0.5      -0.1

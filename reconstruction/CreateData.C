@@ -85,6 +85,10 @@ int main(int argc, char** argv) {
   if (argc>=11) pileup_shift = atof(argv[10]);
   
   
+  //---- fix the correct BX
+  float real_pulse_shift = pulse_shift;
+//   pulse_shift += 25.;
+  
   
   // Makeshift way of passing in an option to manually set noise correlations.
   // Currently, this option will be ignored unless a 0 or a 1 is passed to it.
@@ -94,7 +98,9 @@ int main(int argc, char** argv) {
 
   if (argc>=13) pedestal = atof(argv[12]);
   
-  int IDSTART = 7*25;
+  //---- fix the correct BX
+//   int IDSTART = 7*25;
+  int IDSTART = 6*25;
   int WFLENGTH = 500*4; // step 1/4 ns in waveform
   if (( IDSTART + NSAMPLES * NFREQ ) > 500 ) {
     WFLENGTH = (IDSTART + NSAMPLES * NFREQ)*4 + 100;
@@ -140,15 +146,15 @@ int main(int argc, char** argv) {
   if (correlation_flag == 0.0) {
     filenameOutput =
     Form("input/mysample_%d_%.3f_%.3f_%d_%.2f_%.2f_%.2f_%.3f_%.2f_%s_NoiseUncorrelated.root", 
-         nEventsTotal, pulse_shift, pileup_shift, NSAMPLES, NFREQ, signalAmplitude, nPU, sigmaNoise, puFactor, wf_name);
+         nEventsTotal, real_pulse_shift, pileup_shift, NSAMPLES, NFREQ, signalAmplitude, nPU, sigmaNoise, puFactor, wf_name);
   } else if (correlation_flag == 1.0) {
     filenameOutput =
     Form("input/mysample_%d_%.3f_%.3f_%d_%.2f_%.2f_%.2f_%.3f_%.2f_%s_NoiseFullyCorrelated.root", 
-         nEventsTotal, pulse_shift, pileup_shift, NSAMPLES, NFREQ, signalAmplitude, nPU, sigmaNoise, puFactor, wf_name);
+         nEventsTotal, real_pulse_shift, pileup_shift, NSAMPLES, NFREQ, signalAmplitude, nPU, sigmaNoise, puFactor, wf_name);
   } else {
     filenameOutput =
     Form("input/mysample_%d_%.3f_%.3f_%d_%.2f_%.2f_%.2f_%.3f_%.2f_%s_%.2f.root", 
-         nEventsTotal, pulse_shift, pileup_shift, NSAMPLES, NFREQ, signalAmplitude, nPU, sigmaNoise, puFactor, wf_name, pedestal);
+         nEventsTotal, real_pulse_shift, pileup_shift, NSAMPLES, NFREQ, signalAmplitude, nPU, sigmaNoise, puFactor, wf_name, pedestal);
   }
   TFile *fileOut = new TFile(filenameOutput.Data(),"recreate");
   
@@ -178,7 +184,7 @@ int main(int argc, char** argv) {
   
   // Making the tree
   TTree *treeOut = new TTree("Samples", "");
-  treeOut->Branch("pulse_shift",    &pulse_shift,     "pulse_shift/F");
+  treeOut->Branch("pulse_shift",    &real_pulse_shift,"pulse_shift/F");
   treeOut->Branch("pileup_shift",   &pileup_shift,    "pileup_shift/F");
   treeOut->Branch("nSmpl",          &nSmpl,           "nSmpl/I");
   treeOut->Branch("nFreq",          &nFreq,           "nFreq/F");
