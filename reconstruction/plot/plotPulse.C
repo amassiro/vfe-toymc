@@ -1,6 +1,6 @@
 //---- plot output of multifit
 
-void plotPulse (std::string nameInputFile = "output.root", int nEvent = 10){
+void plotPulse (std::string nameInputFile = "output.root", int nEvent = 10, float pedestal = 0.){
  
  Color_t* color = new Color_t [200];
  color[0] = kAzure; //kRed ;
@@ -26,6 +26,7 @@ void plotPulse (std::string nameInputFile = "output.root", int nEvent = 10){
  std::vector<double>* pulse_signal    = new std::vector<double>;
  std::vector<double>* samplesReco = new std::vector<double>;
  std::vector<double>* samples     = new std::vector<double>;
+ std::vector<double>* samples_noise = new std::vector<double>;
  std::vector<int>*    activeBXs   = new std::vector<int>;
  std::vector<double>* pulseShapeTemplate     = new std::vector<double>;
  
@@ -35,6 +36,7 @@ void plotPulse (std::string nameInputFile = "output.root", int nEvent = 10){
  tree->SetBranchAddress("pulse_signal", &pulse_signal);
  tree->SetBranchAddress("samplesReco", &samplesReco);
  tree->SetBranchAddress("samples",   &samples);
+ tree->SetBranchAddress("samples_noise",   &samples_noise);
  tree->SetBranchAddress("activeBXs", &activeBXs);
  tree->SetBranchAddress("nFreq",   &NFREQ);
  tree->SetBranchAddress("pulseShapeTemplate",   &pulseShapeTemplate);
@@ -70,6 +72,19 @@ void plotPulse (std::string nameInputFile = "output.root", int nEvent = 10){
  
  
  TCanvas* ccPulse = new TCanvas ("ccPulse","",800,600);
+ 
+ TGraph *grPulse_noise = new TGraph();
+ for(int i=0; i<samples->size(); i++){
+   grPulse_noise->SetPoint(i, i * NFREQ , samples_noise->at(i));
+ }
+ grPulse_noise->SetMarkerSize(2);
+ grPulse_noise->SetMarkerStyle(21);
+ grPulse_noise->SetMarkerColor(kGray);
+ grPulse_noise->SetLineColor(kGray);
+ grPulse_noise->SetLineStyle(3);
+ 
+ 
+ 
  TGraph *grPulse = new TGraph();
  for(int i=0; i<samples->size(); i++){
   grPulse->SetPoint(i, i * NFREQ , samples->at(i));
@@ -122,9 +137,14 @@ void plotPulse (std::string nameInputFile = "output.root", int nEvent = 10){
   leg->AddEntry(grPulseReco[iBx],nameHistoTitle.Data(),"p");
  }
  
+ for(int i=0; i<samples->size(); i++){
+   totalRecoSpectrum.at(i) += pedestal;
+ }
+ 
+ 
  grPulse->Draw("ALP");
 //  for(int iBx=0; iBx<3; iBx++){
- for(int iBx=1; iBx<samplesReco->size(); iBx++){
+ for(int iBx=0; iBx<samplesReco->size(); iBx++){
   grPulseReco[iBx]->Draw("PL");
  }
  
@@ -139,6 +159,9 @@ void plotPulse (std::string nameInputFile = "output.root", int nEvent = 10){
  grPulseRecoAll->SetMarkerStyle(24);
  grPulseRecoAll->Draw("PL");
  grPulse->GetXaxis()->SetTitle("time [ns]");
+ 
+ grPulse_noise->Draw("PL");
+ 
  
  
  leg->Draw();

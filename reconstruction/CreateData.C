@@ -47,7 +47,8 @@ int main(int argc, char** argv) {
 
   // Noise level (GeV)
   float sigmaNoise = 0.044;
-
+  float sigmaNoiseScale = 1;
+  
   // PU Scale factor
   float puFactor = 1;
 
@@ -74,7 +75,7 @@ int main(int argc, char** argv) {
   if (argc>=5) NFREQ = atof(argv[4]);
   if (argc>=6) nPU = atof(argv[5]);
   if (argc>=7) signalAmplitude = atof(argv[6]);
-  if (argc>=8) sigmaNoise = atof(argv[7]);
+  if (argc>=8) sigmaNoiseScale = atof(argv[7]);
   if (argc>=9) puFactor = atof(argv[8]);
   if (argc>=10) {
     wf_name = argv[9];
@@ -84,6 +85,8 @@ int main(int argc, char** argv) {
   }
   if (argc>=11) pileup_shift = atof(argv[10]);
   
+  
+  sigmaNoise = sigmaNoise * sigmaNoiseScale;
   
   //---- fix the correct BX
   float real_pulse_shift = pulse_shift;
@@ -115,6 +118,11 @@ int main(int argc, char** argv) {
   std::cout << " nEventsTotal = " << nEventsTotal << std::endl;
   std::cout << " pedestal = "     << pedestal << std::endl;
   std::cout << " wf_name = "      << wf_name << std::endl;
+  std::cout << " puFactor = "     << puFactor << std::endl;
+  std::cout << " sigmaNoise = "   << sigmaNoise << std::endl;
+  std::cout << " sigmaNoiseScale = "   << sigmaNoiseScale << std::endl;
+  
+  
   
   Pulse pSh;
   pSh.SetNSAMPLES(NSAMPLES);
@@ -146,15 +154,15 @@ int main(int argc, char** argv) {
   if (correlation_flag == 0.0) {
     filenameOutput =
     Form("input/mysample_%d_%.3f_%.3f_%d_%.2f_%.2f_%.2f_%.3f_%.2f_%s_NoiseUncorrelated.root", 
-         nEventsTotal, real_pulse_shift, pileup_shift, NSAMPLES, NFREQ, signalAmplitude, nPU, sigmaNoise, puFactor, wf_name);
+         nEventsTotal, real_pulse_shift, pileup_shift, NSAMPLES, NFREQ, signalAmplitude, nPU, sigmaNoiseScale, puFactor, wf_name);
   } else if (correlation_flag == 1.0) {
     filenameOutput =
     Form("input/mysample_%d_%.3f_%.3f_%d_%.2f_%.2f_%.2f_%.3f_%.2f_%s_NoiseFullyCorrelated.root", 
-         nEventsTotal, real_pulse_shift, pileup_shift, NSAMPLES, NFREQ, signalAmplitude, nPU, sigmaNoise, puFactor, wf_name);
+         nEventsTotal, real_pulse_shift, pileup_shift, NSAMPLES, NFREQ, signalAmplitude, nPU, sigmaNoiseScale, puFactor, wf_name);
   } else {
     filenameOutput =
     Form("input/mysample_%d_%.3f_%.3f_%d_%.2f_%.2f_%.2f_%.3f_%.2f_%s_%.2f.root", 
-         nEventsTotal, real_pulse_shift, pileup_shift, NSAMPLES, NFREQ, signalAmplitude, nPU, sigmaNoise, puFactor, wf_name, pedestal);
+         nEventsTotal, real_pulse_shift, pileup_shift, NSAMPLES, NFREQ, signalAmplitude, nPU, sigmaNoiseScale, puFactor, wf_name, pedestal);
   }
   TFile *fileOut = new TFile(filenameOutput.Data(),"recreate");
   
@@ -173,6 +181,7 @@ int main(int argc, char** argv) {
   float nFreq = NFREQ;
   double amplitudeTruth;
   std::vector<double> samples;
+  std::vector<double> samples_noise;
   int BX0;
   int nBX = NBXTOTAL;
   int nWF = WFLENGTH;
@@ -190,6 +199,7 @@ int main(int argc, char** argv) {
   treeOut->Branch("nFreq",          &nFreq,           "nFreq/F");
   treeOut->Branch("amplitudeTruth", &amplitudeTruth,  "amplitudeTruth/D");
   treeOut->Branch("samples",        &samples);
+  treeOut->Branch("samples_noise",        &samples_noise);
   treeOut->Branch("nPU",            &nPU,             "nPU/F");
   treeOut->Branch("BX0",            &BX0,             "BX0/I");
   treeOut->Branch("nBX",            &nBX,             "nBX/I");
@@ -262,6 +272,7 @@ int main(int argc, char** argv) {
     }
     
     // Noise correlations
+    samples_noise.clear();
     samples.clear();
     for (int i=0; i < NSAMPLES; ++i) {
       samples.push_back(0);
@@ -273,6 +284,11 @@ int main(int argc, char** argv) {
     for (int i=0; i < NSAMPLES; ++i) {
       samples.at(i) *= sigmaNoise;
     }
+    
+    for (int i=0; i < NSAMPLES; ++i) {
+      samples_noise.push_back( samples.at(i) );
+    }
+    
     
     // Add signal and pileup
     for (int i=0; i < NSAMPLES; ++i) {
